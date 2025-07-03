@@ -8,11 +8,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 <BaseLayout>
   <div class="max-w-6xl mx-auto px-4 py-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Main Content -->
-      <div class="md:col-span-2">
+      <div class="sm:col-span-2">
         <!-- Articles Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <ArticleCard />
           <ArticleCard />
           <ArticleCard />
@@ -23,7 +23,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </div>
 
       <!-- Sidebar -->
-      <div class="md:col-span-1">
+      <div class="lg:col-span-1">
         <AuthorCard />
         <RecentPostsCard />
         <CategoriesCard />
