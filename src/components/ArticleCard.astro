@@ -1,27 +1,30 @@
 ---
-
+const { frontmatter } = Astro.props;
+const date = new Date(frontmatter.pubDate);
+const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
 ---
 
 <article class="bg-white shadow hover:shadow-md transition-shadow duration-300">
   <div
     class="h-40 bg-gray-700 flex items-center justify-center relative overflow-hidden"
   >
-    <span class="text-white text-3xl font-bold">RN</span>
+    <span class="text-white text-3xl font-bold">POST</span>
     <div class="absolute bottom-0 left-0 w-full h-1 bg-gray-800"></div>
   </div>
   <div class="p-5">
     <h2
       class="text-lg font-bold text-gray-900 mb-3 hover:text-gray-600 transition-colors relative"
     >
-      <a href="#">React Native開発でのパフォーマンス最適化テクニック</a>
+      <a href="#">{frontmatter.title}</a>
       <div
         class="absolute -left-3 top-0 w-1 h-full bg-gray-600 opacity-0 hover:opacity-100 transition-opacity duration-300"
       >
       </div>
     </h2>
     <div class="text-sm text-gray-500 mb-3">
-      <span>2024年12月5日</span> |
-      <span class="text-gray-600 font-medium">モバイル開発</span>
+      <span>{dateText}</span>
+      {frontmatter.category && "|"}
+      <span class="text-gray-600 font-medium">{frontmatter.category}</span>
     </div>
     <div class="flex items-center mb-3">
       <svg
@@ -35,21 +38,18 @@
           clip-rule="evenodd"></path>
       </svg>
       <div class="flex space-x-2">
-        <span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 shadow-sm"
-          >React Native</span
-        >
-        <span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 shadow-sm"
-          >パフォーマンス</span
-        >
-        <span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 shadow-sm"
-          >最適化</span
-        >
+        {
+          frontmatter.tags.map((tag: string) => (
+            <span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 shadow-sm">
+              {tag}
+            </span>
+          ))
+        }
       </div>
     </div>
     <div class="prose max-w-none">
-      <p class="text-gray-600 leading-relaxed text-sm">
-        React
-        Nativeアプリケーションの動作速度を大幅に向上させるための実践的な手法を紹介します。メモリ使用量の削減、レンダリングの最適化、非同期処理の効率化など、具体的なコード例とともに解説します。
+      <p class="text-gray-600 leading-relaxed text-sm line-clamp-5">
+        {frontmatter.description}
       </p>
     </div>
   </div>

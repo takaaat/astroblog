@@ -1,0 +1,12 @@
+---
+layout: "../../layouts/MarkdownPostLayout.astro"
+title: "My second blog post"
+pubDate: 2025-07-03
+description: "本記事では、アプリケーションのパフォーマンスを飛躍的に向上させるための実践的なテクニックを詳しく解説します。メモリ使用量の削減、レンダリングの最適化、非同期処理の効率化など、現場ですぐに役立つノウハウを豊富なコード例とともに紹介します。また、パフォーマンス改善のためのツールの使い方や、よくある落とし穴とその回避方法についても触れ、初心者から中級者まで幅広い読者にとって有益な内容となっています。アプリケーションの速度や安定性を高めたい方は、ぜひご一読ください。"
+tags: ["astro", "blog"]
+category: "blog"
+---
+
+## hello world
+
+This is my first blog post.
