@@ -1,30 +1,12 @@
 ---
 import ArticleCard from "../components/ArticleCard.astro";
-import AuthorCard from "../components/AuthorCard.astro";
-import CategoriesCard from "../components/CategoriesCard.astro";
-import RecentPostsCard from "../components/RecentPostsCard.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogLayout from "../layouts/BlogLayout.astro";
 
 const allPosts = await Astro.glob("../pages/posts/*.md");
 ---
 
-<BaseLayout>
-  <div class="max-w-6xl mx-auto px-4 py-8">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <!-- Main Content -->
-      <div class="lg:col-span-2">
-        <!-- Articles Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {allPosts.map((post) => <ArticleCard post={post} />)}
-        </div>
-      </div>
-
-      <!-- Sidebar -->
-      <div class="lg:col-span-1 mt-8 lg:mt-0">
-        <AuthorCard />
-        <RecentPostsCard />
-        <CategoriesCard />
-      </div>
-    </div>
+<BlogLayout>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    {allPosts.map((post) => <ArticleCard post={post} />)}
   </div>
-</BaseLayout>
+</BlogLayout>
