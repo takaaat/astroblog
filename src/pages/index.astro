@@ -15,11 +15,7 @@ const allPosts = await Astro.glob("../pages/posts/*.md");
       <div class="lg:col-span-2">
         <!-- Articles Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {
-            allPosts.map((post) => (
-              <ArticleCard frontmatter={post.frontmatter} />
-            ))
-          }
+          {allPosts.map((post) => <ArticleCard post={post} />)}
         </div>
       </div>
 
