@@ -10,9 +10,9 @@ const allPosts = await Astro.glob("../pages/posts/*.md");
 
 <BaseLayout>
   <div class="max-w-6xl mx-auto px-4 py-8">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
       <!-- Main Content -->
-      <div class="sm:col-span-2">
+      <div class="lg:col-span-2">
         <!-- Articles Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {
@@ -24,7 +24,7 @@ const allPosts = await Astro.glob("../pages/posts/*.md");
       </div>
 
       <!-- Sidebar -->
-      <div class="lg:col-span-1">
+      <div class="lg:col-span-1 mt-8 lg:mt-0">
         <AuthorCard />
         <RecentPostsCard />
         <CategoriesCard />
