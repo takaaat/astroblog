@@ -1,0 +1,33 @@
+---
+import ArticleCard from "../components/ArticleCard.astro";
+import AuthorCard from "../components/AuthorCard.astro";
+import CategoriesCard from "../components/CategoriesCard.astro";
+import RecentPostsCard from "../components/RecentPostsCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Main Content -->
+      <div class="md:col-span-2">
+        <!-- Articles Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <ArticleCard />
+          <ArticleCard />
+          <ArticleCard />
+          <ArticleCard />
+          <ArticleCard />
+          <ArticleCard />
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="md:col-span-1">
+        <AuthorCard />
+        <RecentPostsCard />
+        <CategoriesCard />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

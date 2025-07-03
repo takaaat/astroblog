@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.prose {
+  @apply max-w-none;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  @apply font-semibold text-gray-900;
+}
+
+.prose p {
+  @apply text-gray-700 leading-relaxed;
+}
+
+.prose a {
+  @apply text-blue-600 hover:text-blue-800 no-underline;
+}
+
+.prose a:hover {
+  @apply underline;
+}

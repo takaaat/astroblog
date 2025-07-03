@@ -1,0 +1,46 @@
+---
+import Navigation from "../components/Navigation.astro";
+import "../styles/global.css";
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+    <style>
+      body {
+        font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体",
+          sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-800 leading-relaxed">
+    <div class="min-h-screen flex flex-col">
+      <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+              <h1 class="text-2xl font-bold text-gray-900">Astro Blog</h1>
+            </div>
+            <Navigation />
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1">
+        <slot />
+      </main>
+
+      <footer class="bg-white shadow-sm mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div class="text-center text-gray-600">
+            <p>&copy; 2025 blog. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
