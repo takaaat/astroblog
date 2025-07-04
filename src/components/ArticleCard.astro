@@ -23,8 +23,19 @@ const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDat
     </h2>
     <div class="text-sm text-gray-500 mb-3">
       <span>{dateText}</span>
-      {frontmatter.category && "|"}
-      <span class="text-gray-600 font-medium">{frontmatter.category}</span>
+      {
+        frontmatter.category && (
+          <>
+            {" | "}
+            <a
+              href={`/categories/${frontmatter.category}`}
+              class="text-gray-600 font-medium hover:underline"
+            >
+              {frontmatter.category}
+            </a>
+          </>
+        )
+      }
     </div>
     <div class="flex items-center mb-3">
       <svg
@@ -41,7 +52,9 @@ const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDat
         {
           frontmatter.tags.map((tag: string) => (
             <span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 shadow-sm">
-              {tag}
+              <a href={`/tags/${tag}`} class="hover:underline">
+                {tag}
+              </a>
             </span>
           ))
         }
