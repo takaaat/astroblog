@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+
+const allPosts = await getCollection("blog");
+const allTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
+const tagCounts = allTags.map((tag) => ({
+  name: tag,
+  count: allPosts.filter((post) => post.data.tags.includes(tag)).length,
+}));
+
+tagCounts.sort((a, b) => b.count - a.count);
+---
+
+<BlogLayout>
+  <div class="text-center text-3xl font-bold mt-2 mb-8">タグ一覧</div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+    {
+      tagCounts.map((tag) => (
+        <a
+          href={`/tags/${tag.name}`}
+          class="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 text-center border border-gray-200 hover:border-blue-300"
+        >
+          <div class="text-lg font-semibold text-gray-800 mb-2">{tag.name}</div>
+          <div class="text-sm text-gray-600">{tag.count}</div>
+        </a>
+      ))
+    }
+  </div>
+</BlogLayout>
