@@ -4,75 +4,78 @@ const date = new Date(frontmatter.pubDate);
 const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
 ---
 
-<article class="bg-white shadow hover:shadow-md transition-shadow duration-300">
+<article class="bg-white shadow hover:shadow-md transition-shadow duration-300 cursor-pointer" onclick={`window.location.href='${url}'`}>
   <div
     class="h-40 bg-gray-700 flex items-center justify-center relative overflow-hidden"
   >
-    {
-      frontmatter.thumbnail ? (
-        <img
-          src={frontmatter.thumbnail}
-          alt={frontmatter.title}
-          class="w-full h-full object-cover"
-        />
-      ) : (
-        <span class="text-white text-3xl font-bold">POST</span>
-      )
-    }
-  </div>
-  <div class="p-5">
-    <h2
-      class="text-lg font-bold text-gray-900 mb-3 hover:text-gray-600 transition-colors relative"
-    >
-      <a href={url}>{frontmatter.title}</a>
-      <div
-        class="absolute -left-3 top-0 w-1 h-full bg-gray-600 opacity-0 hover:opacity-100 transition-opacity duration-300"
-      >
-      </div>
-    </h2>
-    <div class="text-sm text-gray-500 mb-3">
-      <span>{dateText}</span>
       {
-        frontmatter.category && (
-          <>
-            {" | "}
-            <a
-              href={`/categories/${frontmatter.category}`}
-              class="text-gray-600 font-medium hover:underline"
-            >
-              {frontmatter.category}
-            </a>
-          </>
+        frontmatter.thumbnail ? (
+          <img
+            src={frontmatter.thumbnail}
+            alt={frontmatter.title}
+            class="w-full h-full object-cover"
+          />
+        ) : (
+          <span class="text-white text-3xl font-bold">POST</span>
         )
       }
     </div>
-    <div class="flex items-center mb-3">
-      <svg
-        class="w-4 h-4 text-gray-500 mr-2"
-        fill="currentColor"
-        viewBox="0 0 20 20"
+    <div class="p-5">
+      <h2
+        class="text-lg font-bold text-gray-900 mb-3 hover:text-gray-600 transition-colors relative"
       >
-        <path
-          fill-rule="evenodd"
-          d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z"
-          clip-rule="evenodd"></path>
-      </svg>
-      <div class="flex space-x-2">
+        {frontmatter.title}
+        <div
+          class="absolute -left-3 top-0 w-1 h-full bg-gray-600 opacity-0 hover:opacity-100 transition-opacity duration-300"
+        >
+        </div>
+      </h2>
+      <div class="text-sm text-gray-500 mb-3">
+        <span>{dateText}</span>
         {
-          frontmatter.tags.map((tag: string) => (
-            <span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 shadow-sm">
-              <a href={`/tags/${tag}`} class="hover:underline">
-                {tag}
+          frontmatter.category && (
+            <>
+              {" | "}
+              <a
+                href={`/categories/${frontmatter.category}`}
+                class="text-gray-600 font-medium hover:underline"
+                onclick="event.stopPropagation()"
+              >
+                {frontmatter.category}
               </a>
-            </span>
-          ))
+            </>
+          )
         }
       </div>
+      <div class="flex items-center mb-3">
+        <svg
+          class="w-4 h-4 text-gray-500 mr-2"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <div class="flex space-x-2">
+          {
+            frontmatter.tags.map((tag: string) => (
+              <a 
+                href={`/tags/${tag}`} 
+                class="bg-gray-200 text-gray-700 text-xs px-2 py-1 shadow-sm hover:bg-gray-300 transition-colors"
+                onclick="event.stopPropagation()"
+              >
+                {tag}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <div class="prose max-w-none">
+        <p class="text-gray-600 leading-relaxed text-sm line-clamp-5">
+          {frontmatter.description}
+        </p>
+      </div>
     </div>
-    <div class="prose max-w-none">
-      <p class="text-gray-600 leading-relaxed text-sm line-clamp-5">
-        {frontmatter.description}
-      </p>
-    </div>
-  </div>
 </article>
