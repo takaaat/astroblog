@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("blog");
+  const uniqueCategories = [...new Set(allPosts.map((post) => post.data.category))];
+
+  return uniqueCategories.map((category) => {
+    const filteredPosts = allPosts.filter((post) => post.data.category === category);
+    return {
+      params: { category },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { category } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<BlogLayout>
+  <div class="text-center text-3xl font-bold mt-2 mb-8">
+    <span class="inline-block bg-gray-100 px-4 py-2 rounded font-bold">
+      「{category}」カテゴリの記事
+    </span>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-12">
+    {
+      posts.map((post) => (
+        <ArticleCard url={`/posts/${post.id}`} frontmatter={post.data} />
+      ))
+    }
+  </div>
+</BlogLayout>
