@@ -1,6 +1,6 @@
 ---
-const { post } = Astro.props;
-const date = new Date(post.frontmatter.pubDate);
+const { url, frontmatter } = Astro.props;
+const date = new Date(frontmatter.pubDate);
 const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
 ---
 
@@ -15,7 +15,7 @@ const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDat
     <h2
       class="text-lg font-bold text-gray-900 mb-3 hover:text-gray-600 transition-colors relative"
     >
-      <a href={post.url}>{post.frontmatter.title}</a>
+      <a href={url}>{frontmatter.title}</a>
       <div
         class="absolute -left-3 top-0 w-1 h-full bg-gray-600 opacity-0 hover:opacity-100 transition-opacity duration-300"
       >
@@ -23,8 +23,8 @@ const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDat
     </h2>
     <div class="text-sm text-gray-500 mb-3">
       <span>{dateText}</span>
-      {post.frontmatter.category && "|"}
-      <span class="text-gray-600 font-medium">{post.frontmatter.category}</span>
+      {frontmatter.category && "|"}
+      <span class="text-gray-600 font-medium">{frontmatter.category}</span>
     </div>
     <div class="flex items-center mb-3">
       <svg
@@ -39,7 +39,7 @@ const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDat
       </svg>
       <div class="flex space-x-2">
         {
-          post.frontmatter.tags.map((tag: string) => (
+          frontmatter.tags.map((tag: string) => (
             <span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 shadow-sm">
               {tag}
             </span>
@@ -49,7 +49,7 @@ const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDat
     </div>
     <div class="prose max-w-none">
       <p class="text-gray-600 leading-relaxed text-sm line-clamp-5">
-        {post.frontmatter.description}
+        {frontmatter.description}
       </p>
     </div>
   </div>
