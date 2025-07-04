@@ -8,8 +8,17 @@ const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDat
   <div
     class="h-40 bg-gray-700 flex items-center justify-center relative overflow-hidden"
   >
-    <span class="text-white text-3xl font-bold">POST</span>
-    <div class="absolute bottom-0 left-0 w-full h-1 bg-gray-800"></div>
+    {
+      frontmatter.thumbnail ? (
+        <img
+          src={frontmatter.thumbnail}
+          alt={frontmatter.title}
+          class="w-full h-full object-cover"
+        />
+      ) : (
+        <span class="text-white text-3xl font-bold">POST</span>
+      )
+    }
   </div>
   <div class="p-5">
     <h2
