@@ -45,3 +45,11 @@ body {
 .prose a:hover {
   @apply underline;
 }
+
+.prose ul {
+  @apply list-disc pl-6 space-y-2 my-4;
+}
+
+.prose li {
+  @apply text-gray-900 leading-relaxed;
+}
