@@ -4,6 +4,7 @@ pubDate: 2022-08-07
 description: "Scrapboxを使って100ページに到達したので，そこまでの感想を書きました．"
 tags: ["メモアプリ", "Scrapbox"]
 category: "ソフトウェア"
+thumbnail: "/src/blog/cosense.png"
 ---
 
 最近[Scrapbox](https://scrapbox.io)を使い始めました。

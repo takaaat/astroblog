@@ -1,5 +1,6 @@
 ---
 import BlogLayout from "./BlogLayout.astro";
+import { Image } from "astro:assets";
 
 const { frontmatter } = Astro.props;
 const date = new Date(frontmatter.pubDate);
@@ -7,9 +8,22 @@ const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDat
 ---
 
 <BlogLayout>
-  <div class="max-w-4xl mx-auto">
-    <article class="bg-white shadow-md p-8">
-      <header class="mb-8">
+  <div class="max-w-4xl mx-auto px-2 sm:px-0">
+    <article class="bg-white shadow-md overflow-hidden rounded-lg">
+      {
+        frontmatter.thumbnail && (
+          <div class="w-full h-48 sm:h-64 overflow-hidden">
+            <Image
+              src={frontmatter.thumbnail}
+              alt={frontmatter.title}
+              width={800}
+              height={400}
+              class="w-full h-full object-cover"
+            />
+          </div>
+        )
+      }
+      <header class="p-4 sm:p-8 pb-2 sm:pb-4">
         <h1 class="text-3xl font-bold text-gray-900 mb-4">
           {frontmatter.title}
         </h1>
@@ -58,7 +72,7 @@ const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDat
         }
       </header>
 
-      <div class="prose max-w-none">
+      <div class="prose max-w-none px-4 sm:px-8 pb-4 sm:pb-8">
         <slot />
       </div>
     </article>
