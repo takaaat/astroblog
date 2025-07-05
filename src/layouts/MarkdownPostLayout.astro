@@ -19,9 +19,12 @@ const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDat
             frontmatter.category && (
               <>
                 <span class="mx-2">|</span>
-                <span class="text-gray-600 font-medium">
+                <a
+                  href={`/categories/${frontmatter.category}`}
+                  class="text-gray-600 font-medium hover:underline"
+                >
                   {frontmatter.category}
-                </span>
+                </a>
               </>
             )
           }
@@ -42,9 +45,12 @@ const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDat
               </svg>
               <div class="flex space-x-2">
                 {frontmatter.tags.map((tag: string) => (
-                  <span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 shadow-sm">
+                  <a
+                    href={`/tags/${tag}`}
+                    class="bg-gray-200 text-gray-700 text-xs px-2 py-1 shadow-sm hover:bg-gray-300 transition-colors"
+                  >
                     {tag}
-                  </span>
+                  </a>
                 ))}
               </div>
             </div>
