@@ -1,12 +1,7 @@
 ---
-import { getCollection } from "astro:content";
+import { getRecentPosts } from "../utils/blog";
 
-const allPosts = await getCollection("blog");
-allPosts.sort(
-  (a, b) =>
-    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-);
-const recentPosts = allPosts.slice(0, 5);
+const recentPosts = await getRecentPosts(5);
 ---
 
 <div class="bg-white p-6 mb-6 shadow">
@@ -16,7 +11,7 @@ const recentPosts = allPosts.slice(0, 5);
   </h3>
   <ul class="space-y-3">
     {
-      allPosts.map((post) => (
+      recentPosts.map((post) => (
         <li class="relative pl-3">
           <a
             href={`/posts/${post.id}`}

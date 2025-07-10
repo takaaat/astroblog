@@ -1,13 +1,9 @@
 ---
 import ArticleCard from "../components/ArticleCard.astro";
 import BlogLayout from "../layouts/BlogLayout.astro";
-import { getCollection } from "astro:content";
+import { getAllPostsSorted } from "../utils/blog";
 
-const allPosts = await getCollection("blog");
-allPosts.sort(
-  (a, b) =>
-    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
-);
+const allPosts = await getAllPostsSorted();
 ---
 
 <BlogLayout>
