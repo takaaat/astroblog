@@ -1,10 +1,11 @@
 ---
 import { getCollection } from "astro:content";
+import type { CategoryCount } from "../types/blog";
 
 const allPosts = await getCollection("blog");
 const allCategories = [...new Set(allPosts.map((post) => post.data.category))];
 
-const categoryCounts = allCategories.map((category) => ({
+const categoryCounts: CategoryCount[] = allCategories.map((category: string) => ({
   name: category,
   count: allPosts.filter((post) => post.data.category === category).length,
 }));
@@ -19,7 +20,7 @@ categoryCounts.sort((a, b) => b.count - a.count);
   </h3>
   <ul class="space-y-3">
     {
-      categoryCounts.map((category) => (
+      categoryCounts.map((category: CategoryCount) => (
         <li class="flex justify-between items-center group">
           <a
             href={`/categories/${category.name}`}

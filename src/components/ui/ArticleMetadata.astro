@@ -1,13 +1,8 @@
 ---
 import TagList from "./TagList.astro";
+import type { ArticleMetadataProps } from "../../types/blog";
 
-interface Props {
-  dateText: string;
-  category?: string;
-  tags?: string[];
-}
-
-const { dateText, category, tags } = Astro.props;
+const { dateText, category, tags } = Astro.props as ArticleMetadataProps;
 ---
 
 <div class="text-sm text-gray-500 mb-3">

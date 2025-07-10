@@ -2,8 +2,9 @@
 import { formatDateStringToJapanese } from "../utils/date";
 import ArticleThumbnail from "./ui/ArticleThumbnail.astro";
 import ArticleMetadata from "./ui/ArticleMetadata.astro";
+import type { ArticleCardProps } from "../types/blog";
 
-const { url, frontmatter } = Astro.props;
+const { url, frontmatter } = Astro.props as ArticleCardProps;
 const dateText = formatDateStringToJapanese(frontmatter.pubDate);
 ---
 

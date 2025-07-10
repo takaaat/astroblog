@@ -1,12 +1,8 @@
 ---
 import { Image } from "astro:assets";
+import type { ArticleThumbnailProps } from "../../types/blog";
 
-interface Props {
-  thumbnail?: string;
-  title: string;
-}
-
-const { thumbnail, title } = Astro.props;
+const { thumbnail, title } = Astro.props as ArticleThumbnailProps;
 ---
 
 <div class="h-40 bg-gray-700 flex items-center justify-center relative overflow-hidden">

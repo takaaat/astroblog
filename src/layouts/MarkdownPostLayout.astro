@@ -3,8 +3,9 @@ import BlogLayout from "./BlogLayout.astro";
 import { Image } from "astro:assets";
 import { formatDateStringToJapanese } from "../utils/date";
 import TagList from "../components/ui/TagList.astro";
+import type { MarkdownPostLayoutProps } from "../types/blog";
 
-const { frontmatter, file, postId } = Astro.props;
+const { frontmatter, file, postId } = Astro.props as MarkdownPostLayoutProps;
 const dateText = formatDateStringToJapanese(frontmatter.pubDate);
 ---
 

@@ -1,10 +1,7 @@
 ---
-interface Props {
-  tags: string[];
-  stopPropagation?: boolean;
-}
+import type { TagListProps } from "../../types/blog";
 
-const { tags, stopPropagation = false } = Astro.props;
+const { tags, stopPropagation = false } = Astro.props as TagListProps;
 ---
 
 <div class="flex items-start">

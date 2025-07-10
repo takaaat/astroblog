@@ -1,7 +1,8 @@
 ---
 import { getRecentPosts } from "../utils/blog";
+import type { RecentPost } from "../types/blog";
 
-const recentPosts = await getRecentPosts(5);
+const recentPosts: RecentPost[] = await getRecentPosts(5);
 ---
 
 <div class="bg-white p-6 mb-6 shadow">
@@ -11,7 +12,7 @@ const recentPosts = await getRecentPosts(5);
   </h3>
   <ul class="space-y-3">
     {
-      recentPosts.map((post) => (
+      recentPosts.map((post: RecentPost) => (
         <li class="relative pl-3">
           <a
             href={`/posts/${post.id}`}
