@@ -2,44 +2,19 @@
 import BlogLayout from "./BlogLayout.astro";
 import { Image } from "astro:assets";
 
-const { frontmatter, file } = Astro.props;
+const { frontmatter, file, postId } = Astro.props;
 const date = new Date(frontmatter.pubDate);
 const dateText = `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
-
-// 画像のimportを動的に行う
-let thumbnailImage;
-if (frontmatter.thumbnail) {
-  try {
-    const images = import.meta.glob(
-      "/src/blog/**/*.{jpeg,jpg,png,gif,webp,svg}",
-      { eager: true }
-    );
-
-    // 相対パスの場合の処理
-    if (frontmatter.thumbnail.startsWith("./")) {
-      // ファイルパスから記事のディレクトリ名を取得
-      const articleDir = file ? file.split("/").slice(-2, -1)[0] : "scrapbox-1";
-      const imagePath = `/src/blog/${articleDir}/${frontmatter.thumbnail.substring(2)}`;
-      thumbnailImage = images[imagePath]?.default || frontmatter.thumbnail;
-    } else {
-      thumbnailImage =
-        images[frontmatter.thumbnail]?.default || frontmatter.thumbnail;
-    }
-  } catch (error) {
-    console.warn("Thumbnail image could not be loaded:", frontmatter.thumbnail);
-    thumbnailImage = frontmatter.thumbnail;
-  }
-}
 ---
 
 <BlogLayout>
   <div class="max-w-4xl mx-auto">
     <article class="bg-white shadow-md overflow-hidden rounded-lg">
       {
-        thumbnailImage && (
+        frontmatter.thumbnail && (
           <div class="w-full h-48 sm:h-64 overflow-hidden">
             <Image
-              src={thumbnailImage}
+              src={frontmatter.thumbnail}
               alt={frontmatter.title}
               width={800}
               height={400}
