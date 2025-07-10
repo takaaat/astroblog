@@ -16,13 +16,9 @@ const { dateText, category, tags } = Astro.props;
     category && (
       <>
         {" | "}
-        <a
-          href={`/categories/${category}`}
-          class="text-gray-600 font-medium hover:underline"
-          onclick="event.stopPropagation()"
-        >
+        <span class="text-gray-600 font-medium">
           {category}
-        </a>
+        </span>
       </>
     )
   }

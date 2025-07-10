@@ -7,30 +7,28 @@ const { url, frontmatter } = Astro.props;
 const dateText = formatDateStringToJapanese(frontmatter.pubDate);
 ---
 
-<article class="bg-white shadow hover:shadow-md transition-shadow duration-300 cursor-pointer" onclick={`window.location.href='${url}'`}>
-  <ArticleThumbnail 
-    thumbnail={frontmatter.thumbnail}
-    title={frontmatter.title}
-  />
-  <div class="p-5">
-    <h2
-      class="text-lg font-bold text-gray-900 mb-3 hover:text-gray-600 transition-colors relative"
-    >
-      {frontmatter.title}
-      <div
-        class="absolute -left-3 top-0 w-1 h-full bg-gray-600 opacity-0 hover:opacity-100 transition-opacity duration-300"
-      >
-      </div>
-    </h2>
-    <ArticleMetadata 
-      dateText={dateText}
-      category={frontmatter.category}
-      tags={frontmatter.tags}
+<article class="bg-white shadow hover:shadow-md transition-shadow duration-300">
+  <a href={url} class="block focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+    <ArticleThumbnail 
+      thumbnail={frontmatter.thumbnail}
+      title={frontmatter.title}
     />
-    <div class="prose max-w-none">
-      <p class="text-gray-600 leading-relaxed text-sm line-clamp-5">
-        {frontmatter.description}
-      </p>
+    <div class="p-5">
+      <h2
+        class="text-lg font-bold text-gray-900 mb-3 hover:text-gray-600 transition-colors relative before:absolute before:-left-3 before:top-0 before:w-1 before:h-full before:bg-gray-600 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300"
+      >
+        {frontmatter.title}
+      </h2>
+      <ArticleMetadata 
+        dateText={dateText}
+        category={frontmatter.category}
+        tags={frontmatter.tags}
+      />
+      <section class="prose max-w-none" aria-label="記事の概要">
+        <p class="text-gray-600 leading-relaxed text-sm line-clamp-5">
+          {frontmatter.description}
+        </p>
+      </section>
     </div>
-  </div>
+  </a>
 </article>
