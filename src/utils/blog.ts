@@ -2,7 +2,7 @@ import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
 /**
- * Gets all blog posts sorted by publication date (newest first)
+ * 全てのブログ投稿を公開日順（新しい順）で取得
  */
 export async function getAllPostsSorted(): Promise<CollectionEntry<'blog'>[]> {
   const allPosts = await getCollection("blog");
@@ -13,7 +13,7 @@ export async function getAllPostsSorted(): Promise<CollectionEntry<'blog'>[]> {
 }
 
 /**
- * Gets recent blog posts (limited to specified count)
+ * 最新のブログ投稿を指定された件数まで取得
  */
 export async function getRecentPosts(count: number = 5): Promise<CollectionEntry<'blog'>[]> {
   const allPosts = await getAllPostsSorted();
