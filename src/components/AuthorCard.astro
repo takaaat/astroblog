@@ -1,11 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import authorImage from "../images/authorIcon.png";
-const author = {
-  name: "takaaat",
-  subtitle: "",
-  description: "このブログの記事を書いている人です",
-};
+import { authorConfig } from "../config/author";
 ---
 
 <div class="bg-white p-6 mb-6 shadow">
@@ -23,11 +19,11 @@ const author = {
         class="w-full h-full object-cover"
       />
     </div>
-    <h4 class="font-medium text-gray-800">{author.name}</h4>
-    <p class="text-sm text-gray-500">{author.subtitle}</p>
+    <h4 class="font-medium text-gray-800">{authorConfig.name}</h4>
+    <p class="text-sm text-gray-500">{authorConfig.subtitle}</p>
   </div>
   <p class="text-sm text-gray-600 leading-relaxed relative pl-3">
     <div class="absolute left-0 top-1 w-1 h-4 bg-gray-400"></div>
-    {author.description}
+    {authorConfig.description}
   </p>
 </div>

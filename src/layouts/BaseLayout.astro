@@ -1,6 +1,7 @@
 ---
 import Navigation from "../components/Navigation.astro";
 import "../styles/global.css";
+import { siteConfig } from "../config/site";
 ---
 
 <html lang="ja">
@@ -9,7 +10,7 @@ import "../styles/global.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>{siteConfig.title}</title>
     <style>
       body {
         font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体",
@@ -27,7 +28,7 @@ import "../styles/global.css";
                 href="/"
                 class="text-gray-900 text-2xl font-bold duration-200 px-3 py-2 rounded-md hover:bg-gray-100"
               >
-                2not
+{siteConfig.blogName}
               </a>
             </div>
             <Navigation />
@@ -42,7 +43,7 @@ import "../styles/global.css";
       <footer class="bg-white shadow-sm mt-auto">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div class="text-center text-gray-600">
-            <p>&copy; 2025 2not blog. All rights reserved.</p>
+            <p>&copy; {siteConfig.copyright}</p>
           </div>
         </div>
       </footer>
