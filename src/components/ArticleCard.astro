@@ -1,64 +1,36 @@
 ---
-import { Image, getImage } from "astro:assets";
 import { formatDateStringToJapanese } from "../utils/date";
-import TagList from "./ui/TagList.astro";
+import ArticleThumbnail from "./ui/ArticleThumbnail.astro";
+import ArticleMetadata from "./ui/ArticleMetadata.astro";
 
 const { url, frontmatter } = Astro.props;
 const dateText = formatDateStringToJapanese(frontmatter.pubDate);
 ---
 
 <article class="bg-white shadow hover:shadow-md transition-shadow duration-300 cursor-pointer" onclick={`window.location.href='${url}'`}>
-  <div
-    class="h-40 bg-gray-700 flex items-center justify-center relative overflow-hidden"
-  >
-      {
-        frontmatter.thumbnail ? (
-          <Image
-            src={frontmatter.thumbnail}
-            alt={frontmatter.title}
-            width={400}
-            height={160}
-            class="w-full h-full object-cover"
-          />
-        ) : (
-          <span class="text-white text-3xl font-bold">POST</span>
-        )
-      }
-    </div>
-    <div class="p-5">
-      <h2
-        class="text-lg font-bold text-gray-900 mb-3 hover:text-gray-600 transition-colors relative"
+  <ArticleThumbnail 
+    thumbnail={frontmatter.thumbnail}
+    title={frontmatter.title}
+  />
+  <div class="p-5">
+    <h2
+      class="text-lg font-bold text-gray-900 mb-3 hover:text-gray-600 transition-colors relative"
+    >
+      {frontmatter.title}
+      <div
+        class="absolute -left-3 top-0 w-1 h-full bg-gray-600 opacity-0 hover:opacity-100 transition-opacity duration-300"
       >
-        {frontmatter.title}
-        <div
-          class="absolute -left-3 top-0 w-1 h-full bg-gray-600 opacity-0 hover:opacity-100 transition-opacity duration-300"
-        >
-        </div>
-      </h2>
-      <div class="text-sm text-gray-500 mb-3">
-        <span>{dateText}</span>
-        {
-          frontmatter.category && (
-            <>
-              {" | "}
-              <a
-                href={`/categories/${frontmatter.category}`}
-                class="text-gray-600 font-medium hover:underline"
-                onclick="event.stopPropagation()"
-              >
-                {frontmatter.category}
-              </a>
-            </>
-          )
-        }
       </div>
-      <div class="mb-3">
-        <TagList tags={frontmatter.tags} stopPropagation={true} />
-      </div>
-      <div class="prose max-w-none">
-        <p class="text-gray-600 leading-relaxed text-sm line-clamp-5">
-          {frontmatter.description}
-        </p>
-      </div>
+    </h2>
+    <ArticleMetadata 
+      dateText={dateText}
+      category={frontmatter.category}
+      tags={frontmatter.tags}
+    />
+    <div class="prose max-w-none">
+      <p class="text-gray-600 leading-relaxed text-sm line-clamp-5">
+        {frontmatter.description}
+      </p>
     </div>
+  </div>
 </article>

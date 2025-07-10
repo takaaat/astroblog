@@ -1,5 +1,6 @@
 ---
-import Navigation from "../components/Navigation.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
 import "../styles/global.css";
 import { siteConfig } from "../config/site";
 ---
@@ -20,33 +21,13 @@ import { siteConfig } from "../config/site";
   </head>
   <body class="bg-gray-100 text-gray-800 leading-relaxed">
     <div class="min-h-screen flex flex-col">
-      <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex items-center justify-between h-16">
-            <div class="flex items-center">
-              <a
-                href="/"
-                class="text-gray-900 text-2xl font-bold duration-200 px-3 py-2 rounded-md hover:bg-gray-100"
-              >
-{siteConfig.blogName}
-              </a>
-            </div>
-            <Navigation />
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <main class="flex-1">
         <slot />
       </main>
 
-      <footer class="bg-white shadow-sm mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div class="text-center text-gray-600">
-            <p>&copy; {siteConfig.copyright}</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   </body>
 </html>

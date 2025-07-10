@@ -1,0 +1,32 @@
+---
+import TagList from "./TagList.astro";
+
+interface Props {
+  dateText: string;
+  category?: string;
+  tags?: string[];
+}
+
+const { dateText, category, tags } = Astro.props;
+---
+
+<div class="text-sm text-gray-500 mb-3">
+  <span>{dateText}</span>
+  {
+    category && (
+      <>
+        {" | "}
+        <a
+          href={`/categories/${category}`}
+          class="text-gray-600 font-medium hover:underline"
+          onclick="event.stopPropagation()"
+        >
+          {category}
+        </a>
+      </>
+    )
+  }
+</div>
+<div class="mb-3">
+  <TagList tags={tags} stopPropagation={true} />
+</div>

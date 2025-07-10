@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  thumbnail?: string;
+  title: string;
+}
+
+const { thumbnail, title } = Astro.props;
+---
+
+<div class="h-40 bg-gray-700 flex items-center justify-center relative overflow-hidden">
+  {
+    thumbnail ? (
+      <Image
+        src={thumbnail}
+        alt={title}
+        width={400}
+        height={160}
+        class="w-full h-full object-cover"
+      />
+    ) : (
+      <span class="text-white text-3xl font-bold">POST</span>
+    )
+  }
+</div>
