@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../config/site";
+---
+
+<BaseLayout>
+  <div class="max-w-4xl mx-auto px-4 py-16">
+    <div class="text-center">
+      <div class="mb-8">
+        <h1 class="text-8xl font-bold text-gray-300 mb-4">404</h1>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+          ページが見つかりません
+        </h2>
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          お探しのページは存在しないか、移動された可能性があります。<br>
+          URLを再度ご確認いただくか、以下のリンクをご利用ください。
+        </p>
+      </div>
+
+      <div class="bg-white shadow-lg rounded-lg p-8 mb-8">
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">おすすめのページ</h3>
+        <div class="space-y-4">
+          <a
+            href="/"
+            class="block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
+          >
+            ホームページに戻る
+          </a>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a
+              href="/categories"
+              class="block bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+            >
+              カテゴリー一覧
+            </a>
+            <a
+              href="/tags"
+              class="block bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+            >
+              タグ一覧
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-sm text-gray-500">
+        <p>
+          問題が解決しない場合は、
+          <a href="/" class="text-blue-600 hover:text-blue-800 underline">
+            {siteConfig.blogName}
+          </a>
+          のトップページからお探しください。
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
